@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react'
 
 async function Product() {
-    const res =await axios.get("https://dummyjson.com/products")
+    const res =await axios.get(`${process.env.NEXT_PUBLIC_DUMMY}/products`)
     const product=res.data.products
     console.log(product);
   return (

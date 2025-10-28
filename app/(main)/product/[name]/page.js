@@ -4,12 +4,12 @@ import Image from 'next/image'
 
 
 async function showDetails(name) {
-  const res = await axios.get(`https://dummyjson.com/products/${name}`)
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_DUMMY}/${name}`)
   return res.data
 }
 
 async function getAllProducts() {
-  const res =await axios.get("https://dummyjson.com/products")
+  const res =await axios.get(`${process.env.NEXT_PUBLIC_DUMMY}/products`)
   return res.data.products
 }
 

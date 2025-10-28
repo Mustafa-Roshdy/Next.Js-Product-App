@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 
 async function getUsers() {
-  const res = await fetch("https://68ff502de02b16d1753d64bf.mockapi.io/users/users",{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_MOCKAPI}/users/users`,{
     next:{
         revalidate:10
     }

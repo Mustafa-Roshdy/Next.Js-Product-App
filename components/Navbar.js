@@ -55,6 +55,18 @@ export default function NavBar() {
                         User
                     </Link>
                     <Link
+                        href="/todo"
+                        className="text-base font-medium text-blue-900 dark:text-blue-100 transition hover:text-blue-600 dark:hover:text-blue-300"
+                    >
+                        Todo
+                    </Link>
+                     <Link
+                        href="/addtodo"
+                        className="text-base font-medium text-blue-900 dark:text-blue-100 transition hover:text-blue-600 dark:hover:text-blue-300"
+                    >
+                       Add Todo
+                    </Link>
+                    <Link
                         href="/contact"
                         className="text-base font-medium text-blue-900 dark:text-blue-100 transition hover:text-blue-600 dark:hover:text-blue-300"
                     >
