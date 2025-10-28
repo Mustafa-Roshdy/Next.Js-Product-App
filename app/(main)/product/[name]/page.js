@@ -21,7 +21,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  return { title: `${params.name}` };
+  const { name } = await params
+  const product = await showDetails(name)
+  return { title: product.title ,description :product.description};
 }
 
 
