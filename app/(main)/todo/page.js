@@ -7,13 +7,12 @@ export const dynamic = "force-dynamic";
 export default async function Todos() {
 //   const res = await GET();
 
-   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/todos`, {
-    cache: "no-store",
-  });
+  const res = await fetch("/api/todos", { cache: "no-store" });
+
   const data = await res.json();
   const todos = data.todos || [];
 
-  
+
 //   const data = await res.json();
 //   const todos = data.todos || [];
 
