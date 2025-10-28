@@ -4,8 +4,9 @@ import Link from 'next/link';
 import React from 'react'
 
 async function Product() {
-    const res =await axios.get(`${process.env.NEXT_PUBLIC_DUMMY}/products`)
-    const product=res.data.products
+    const res =await fetch(`${process.env.NEXT_PUBLIC_DUMMY}/products`)
+    const data = await res.json();
+    const product=data.products;
     console.log(product);
   return (
    <div  className="grid gap-8 py-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10 bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">

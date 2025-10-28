@@ -1,25 +1,29 @@
-
-import axios from 'axios'
 import Image from 'next/image'
 
 
 async function showDetails(name) {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_DUMMY}/${name}`)
-  return res.data
+  const res = await fetch(`${process.env.NEXT_PUBLIC_DUMMY}/products/${name}`, {
+    next: { revalidate: 3600 },
+  })
+  const data = await res.json();
+  return data;
 }
 
 async function getAllProducts() {
-  const res =await axios.get(`${process.env.NEXT_PUBLIC_DUMMY}/products`)
-  return res.data.products
+  const res =await fetch(`${process.env.NEXT_PUBLIC_DUMMY}/products`)
+  const data = await res.json();
+  return data.products;
 }
 
 export async function generateStaticParams() {
-  const products = await getAllProducts()
-  const myParams=products.map(product=>{
-    return {id:product.id.toString()}
-  })
-  return myParams
+  const data = await getAllProducts();
+  return data.map((p) => ({ name: p.id.toString() }));
 }
+
+export async function generateMetadata({ params }) {
+  return { title: `${params.name}` };
+}
+
 
 export default async function Details({ params }) {
 
